@@ -12,7 +12,7 @@
           minlength="6"
           maxlength="33"
           required
-          pattern="[a-zA-Z]+$"
+          pattern="[a-zA-Z0-9]+$"
           (change)="log(username)"
           class="form-control"
           id="exampleInputUsername1"
@@ -36,9 +36,10 @@
           name="password"
           ngModel
           #password="ngModel"
-          minlength="6"
+          minlength="8"
           required
-          pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]))"
+          (change)="log(password)"
+          pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
           class="form-control"
           id="exampleInputPassword1"
           placeholder="Password">
@@ -51,7 +52,7 @@
             password should be minimum {{ password.errors.minlength.requiredLength }} characters
           </div>
           <div *ngIf="password.errors.pattern">
-            password should be only alphacharacters
+            password must be at least 1 digit, 1 lowercase, 1 uppercase and 1 of special chars [@$!%*?&].
           </div>
         </div>
         <div class="checkbox--div">

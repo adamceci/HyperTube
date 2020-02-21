@@ -84,8 +84,21 @@ h4{
 
 .form-group{
   padding-top: 10px;
+  margin: 0;
 }
 
 .form-check{
   padding-top: 10px;
+}
+
+.error--msg div{
+  margin-top: 2px;
+  color: #c33838;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.info-error--div
+{
+  margin-left: 5px;
 }
