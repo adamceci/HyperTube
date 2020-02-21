@@ -1,0 +1,91 @@
+.container{
+  margin-top: 10vh;
+}
+
+.sign-in--main form, .social--login{
+  background-color: rgba(77, 77, 77, 0.3);
+}
+
+.sign-in--main form{
+  padding: 5vh 5vh;
+  border-radius: 10px;
+  // box-shadow: 1px 1px 5px grey;
+}
+
+.facebook{
+  background-color: rgb(66,103,178);
+}
+.facebook img{
+  width: 35px;
+  height: 35px;
+  border-radius: 15px;
+}
+.google{
+  background-color: rgb(255,255,255);
+}
+.google img{
+  width: 60px;
+  height: 35px;
+}
+.logo-42{
+  background-color: rgba(27, 27, 27, 0.8);
+}
+.logo-42 img{
+  width: 42px;
+  height: 42px;
+}
+
+.social--login{
+  margin-top: 2vh;
+  padding: 0;
+}
+
+.social--login button{
+  border: none;
+  filter: opacity(0.8);
+  border-radius: 0;
+}
+
+.social--login button:hover {
+  filter: opacity(1);
+}
+.social--login button img{
+  left: 0px;
+}
+
+.sign-up--link{
+  color: grey;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.sign-in--button{
+  margin-top: 60px;
+  border-radius: 15px;
+}
+
+form h4{
+  margin-top: 10px;
+  padding-bottom: 40px;
+}
+
+h4{
+  color: rgb(243,220,0);
+  margin-top: 2vh;
+  text-align: center;
+}
+
+.form-control{
+  background-color: transparent;
+  border: 1px solid #7a7a7a;
+  color: #7a7a7a;
+  font-size: 0.9rem;
+}
+
+.form-group{
+  padding-top: 10px;
+}
+
+.form-check{
+  padding-top: 10px;
+}
