@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map, filter, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class HomeService
 {
-   constructor(private http: Http) { }
+   constructor(private http: HttpClient) { }
 
    call_api()
    {
-       return this.http.get('http://localhost:3000/')
-           .map(res => res.json());
+     return this.http.get('http://localhost:3000/');
    }
 }

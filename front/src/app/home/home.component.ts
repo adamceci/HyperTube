@@ -1,26 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-//import { map } from 'rxjs/operators';
+
+import { HomeService } from '../services/home.service';
 
 @Component({
   selector: 'app-home',
+  providers: [HomeService],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit
 {
-  totalAngularPackages;
+  api_response: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private homeService: HomeService) {}
 
   ngOnInit()
   {
-    console.log(this.http.get('http://localhost:3000/api/auth'));
-
-    this.http.get<any>('http://localhost:3000/').subscribe(data =>
+    this.homeService.call_api().subscribe((res) =>
     {
-      this.totalAngularPackages = data.total;
-      console.log(this.totalAngularPackages);
-    })
+      console.log('-------------------');
+      console.log(res);
+      console.log('-------------------');
+    });
+
+    console.log(this.api_response);
+
   }
 }
