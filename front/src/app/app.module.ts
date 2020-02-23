@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
-import {
-  AuthService,
-  SocialLoginModule,
-  AuthServiceConfig,
-  GoogleLoginProvider,
-  FacebookLoginProvider
-} from 'angularx-social-login';
+// import {
+//   AuthService,
+//   SocialLoginModule,
+//   AuthServiceConfig,
+//   GoogleLoginProvider,
+//   FacebookLoginProvider
+// } from 'angularx-social-login';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -20,20 +20,20 @@ import { SignupComponent } from './signup/signup.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { OauthComponent } from './oauth/oauth.component';
 
-const config = new AuthServiceConfig([
-  {
-    id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider('131348951269-vk2kajdrnmlv192renn05ivs188e12k3.apps.googleusercontent.com')
-  },
-  {
-    id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider('534763897159080')
-  }
-]);
+// const config = new AuthServiceConfig([
+//   {
+//     id: GoogleLoginProvider.PROVIDER_ID,
+//     provider: new GoogleLoginProvider('131348951269-vk2kajdrnmlv192renn05ivs188e12k3.apps.googleusercontent.com')
+//   },
+//   {
+//     id: FacebookLoginProvider.PROVIDER_ID,
+//     provider: new FacebookLoginProvider('534763897159080')
+//   }
+// ]);
 
-export function provideConfig() {
-  return config;
-}
+// export function provideConfig() {
+//   return config;
+// }
 
 @NgModule({
   declarations: [
@@ -50,14 +50,14 @@ export function provideConfig() {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    SocialLoginModule
+    // SocialLoginModule
   ],
   providers: [
-    AuthService,
-    {
-      provide: AuthServiceConfig,
-      useFactory: provideConfig
-    }
+    // AuthService,
+    // {
+    //   provide: AuthServiceConfig,
+    //   useFactory: provideConfig
+    // }
   ],
   bootstrap: [AppComponent]
 })
