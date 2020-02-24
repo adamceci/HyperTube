@@ -33,9 +33,9 @@ mongoose.connect('mongodb+srv://cbrichau:hypertube19@cluster0-fzc0r.mongodb.net/
 
 const app = express();
 
-//Allows access to our API from any origin (*),
-//assigns the given headers to requests to our API (Origin, X-Requested...),
-//and allows requests with different methods (GET,POST...)
+//- Allows access to our API from any origin (*).
+//- Assigns the given headers to requests to our API (Origin, X-Requested...).
+//- Allows requests with different methods (GET,POST...).
 app.use((req, res, next) =>
 {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -48,8 +48,23 @@ app.use((req, res, next) =>
 app.use(bodyParser.json());
 
 //check
-app.get('/', (req, res) => {
-   res.json({ message: 'Req to /' });
+app.use('/', (req, res) =>
+{
+  /*
+  const layout_elements =
+  [
+    { meta_title: 'Home', h1_title: 'Welcome to HyperTube' }
+  ];*/
+  const layout_elements =
+  {
+    'en': { field_1: 'field_1', field_2: 'field_2', field_3: 'field_3' },
+    'fr': { field_1: 'field_1', field_2: 'field_2', field_3: 'field_3' }
+  };
+  res.status(200).json(
+  {
+    message: 'Successful request to /',
+    layout_elements: layout_elements['en']
+  });
 });
 
 //Send requests for the route '/api/xxx' to the router xxxRoutes.

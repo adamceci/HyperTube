@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Home } from './home.model';
 import { HomeService } from '../services/home.service';
 
 @Component({
@@ -8,22 +9,25 @@ import { HomeService } from '../services/home.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit
+export class HomeComponent implements OnInit, OnDestroy
 {
-  api_response: any;
+  public layout: Home[] = [];
+  private layoutSubscription: Subscription;
 
   constructor(private homeService: HomeService) {}
 
   ngOnInit()
   {
-    this.homeService.call_api().subscribe((res) =>
-    {
-      console.log('-------------------');
-      console.log(res);
-      console.log('-------------------');
-    });
+    this.homeService.getLayout();
+    this.layoutSubscription = this.homeService.getLayoutUpdateListener()
+      .subscribe((layoutHome: Home[]) =>
+      {
+        this.layout = layoutHome;
+      });
+  }
 
-    console.log(this.api_response);
-
+  ngOnDestroy()
+  {
+    this.layoutSubscription.unsubscribe();
   }
 }

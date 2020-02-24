@@ -1,15 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map, filter, switchMap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { Home } from '../home/home.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class HomeService
 {
-   constructor(private http: HttpClient) { }
+  private layout: Home[] = [];
+  private layoutUpdated = new Subject<Home[]>();
 
-   call_api()
-   {
-     return this.http.get('http://localhost:3000/');
-   }
+  constructor(private http: HttpClient) {}
+
+  getLayout()
+  {
+    this.http.get<{message: string, layout_elements: Home[]}>('http://localhost:3000/')
+      .subscribe((responseData) =>
+      {
+        this.layout = responseData.layout_elements;
+        this.layoutUpdated.next(this.layout);
+      });
+  }
+
+  getLayoutUpdateListener()
+  {
+    return this.layoutUpdated.asObservable();
+  }
 }

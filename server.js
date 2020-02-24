@@ -10,14 +10,13 @@ Note: Need aliases for commands installed locally:
     1) Imports the required elements (node package, express app from app.js).
 \* -------------------------------------------------------------------------- */
 
-const http = require('http');
+const http = require('http'); //Node package that has the .createServer() fct.
 const app = require('./app');
 
 /* -------------------------------------------------------------------------- *\
     2) Defines the port on which 'app' runs.
 \* -------------------------------------------------------------------------- */
 
-//Port = default or, if none defined, 3000.
 //NormalizePort() returns a valid default value (given as number or string).
 const normalizePort = val =>
 {
@@ -28,14 +27,24 @@ const normalizePort = val =>
     return port;
   return false;
 };
+
+//Port = default valid value or, if none defined, 3000.
 const port = normalizePort(process.env.PORT || '3000');
+
+//Set the chosen port to the app's configuration.
 app.set('port', port);
 
 /* -------------------------------------------------------------------------- *\
-    3) Handles server errors.
+    3) Creates the server using 'app' (which manages the req->res process).
 \* -------------------------------------------------------------------------- */
 
-const errorHandler = error =>
+const server = http.createServer(app);
+
+/* -------------------------------------------------------------------------- *\
+    4) Defines the functions for handling errors and listening to requests.
+\* -------------------------------------------------------------------------- */
+
+const onError = error =>
 {
   if (error.syscall !== 'listen')
     throw error;
@@ -56,19 +65,17 @@ const errorHandler = error =>
   }
 };
 
-/* -------------------------------------------------------------------------- *\
-    4) Launches the server.
-\* -------------------------------------------------------------------------- */
-
-//Create the server using 'app'(which manages the request->response process).
-const server = http.createServer(app);
-
-//Configures the server to handle errors and listen to changes on the app's port.
-server.on('error', errorHandler);
-server.on('listening', () =>
+const onListening = () =>
 {
   const address = server.address();
   const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port;
   console.log('Listening on ' + bind);
-});
+};
+
+/* -------------------------------------------------------------------------- *\
+    5) Launches the server.
+\* -------------------------------------------------------------------------- */
+
+server.on('error', onError);
+server.on('listening', onListening);
 server.listen(port);
