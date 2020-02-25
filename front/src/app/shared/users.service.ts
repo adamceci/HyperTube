@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { User } from './user.model';
 
 @Injectable({
@@ -6,7 +7,7 @@ import { User } from './user.model';
 })
 export class UsersService {
   // recuperer l'array de user depuis la bdd
-  private users: User[];
+  private users: User[] = [];
 
   constructor() { }
 

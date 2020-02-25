@@ -5,7 +5,7 @@ export class User {
   photoUrl: string;
   firstName: string;
   lastName: string;
-  // authToken: string;
-  // idToken: string;
-  // provider: string;
+  authToken?: string;
+  idToken?: string;
+  provider?: string;
 }
