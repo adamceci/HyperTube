@@ -13,7 +13,6 @@
           maxlength="33"
           required
           pattern="[a-zA-Z0-9]+$"
-          (change)="log(username)"
           class="form-control"
           id="exampleInputUsername1"
           aria-describedby="usernameHelp"
@@ -38,7 +37,6 @@
           #password="ngModel"
           minlength="8"
           required
-          (change)="log(password)"
           pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
           class="form-control"
           id="exampleInputPassword1"

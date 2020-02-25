@@ -7,9 +7,16 @@
     <button class="btn facebook col-12">
       <img src="../../assets/img/facebook--logo.png" alt="facebook-logo" class="facebook--logo">
     </button>
-    <button class="btn google col-12" #googleRef>
+    <button class="btn google col-12">
       <img src="../../assets/img/google--logo.png" alt="google-logo" class="google--logo">
     </button>
-    <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+    <!-- <button class="btn" (click)="signOut()">Sign out</button> -->
   </div>
 </div>
+<!-- <div *ngIf="user">
+  <img src="{{ user.photoUrl }}" alt="">
+  <div>
+    <h4>{{ user.name }}</h4>
+    <p>{{ user.email }}</p>
+  </div>
+</div> -->
